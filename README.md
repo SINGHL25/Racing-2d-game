@@ -27,7 +27,7 @@ racing-2d-game/
 │   ├── style.css
 │   └── game.js
 │
-├── streamlit-app/               # Alternative Streamlit version (runs on cloud)
+├── streamlit-app/               # Streamlit version for cloud deployment
 │   ├── app.py
 │   ├── requirements.txt
 │   └── streamlit_assets/
@@ -35,12 +35,27 @@ racing-2d-game/
 │       ├── obstacle.png
 │       └── road.png
 │
+├── replit/                      # Replit branch files for instant run
+│   ├── main.py                   # Starter Python script to launch browser-based game
+│   ├── index.html
+│   ├── style.css
+│   ├── game.js
+│   └── assets/
+│       ├── images/
+│       │   ├── car.png
+│       │   ├── obstacle.png
+│       │   ├── star.png
+│       │   ├── fuel.png
+│       │   └── road.png
+│       └── sounds/
+│           ├── engine.mp3
+│           ├── crash.mp3
+│           └── pickup.mp3
+│
 └── .github/
     └── workflows/               # CI/CD for GitHub Pages + Streamlit deploy
         ├── deploy-pages.yml
         └── deploy-streamlit.yml
-
-
 
 
 ```
