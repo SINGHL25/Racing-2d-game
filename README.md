@@ -4,6 +4,7 @@
 A complete 2D car racing game built with vanilla JavaScript, HTML5 Canvas, and CSS3. Navigate through 5 challenging levels while avoiding obstacles, collecting stars, managing fuel, and using power-ups!
 
 ## 🎮 Game Features
+<img width="1024" height="1024" alt="Generated Image September 21, 2025 - 2_07PM" src="https://github.com/user-attachments/assets/6a821d38-6188-419a-858c-d81c020ac1e0" />
 
 ### Core Gameplay
 - **Smooth Car Controls**: Use arrow keys or WASD to steer your car left and right
