@@ -1,4 +1,5 @@
 # 2D Car Racing Game
+<img width="1536" height="1024" alt="ChatGPT Image Sep 21, 2025, 02_01_22 PM" src="https://github.com/user-attachments/assets/2bab06ac-047f-43a7-94f0-655ace953edd" />
 
 A complete 2D car racing game built with vanilla JavaScript, HTML5 Canvas, and CSS3. Navigate through 5 challenging levels while avoiding obstacles, collecting stars, managing fuel, and using power-ups!
 
