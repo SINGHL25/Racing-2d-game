@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Car Racing Game</title>
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- Game UI Overlay -->
+        <div id="gameUI">
+            <div id="topBar">
+                <div id="scoreDisplay">Score: <span id="score">0</span></div>
+                <div id="levelDisplay">Level: <span id="level">1</span></div>
+                <div id="fuelContainer">
+                    <div id="fuelLabel">Fuel:</div>
+                    <div id="fuelBar">
+                        <div id="fuelFill"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Power-up indicators -->
+            <div id="powerUpIndicators">
+                <div id="speedBoostIndicator" class="power-up-indicator hidden">
+                    <span>⚡ Speed Boost</span>
+                    <div class="power-up-timer"></div>
+                </div>
+                <div id="shieldIndicator" class="power-up-indicator hidden">
+                    <span>🛡️ Shield Active</span>
+                    <div class="power-up-timer"></div>
+                </div>
+                <div id="invincibilityIndicator" class="power-up-indicator hidden">
+                    <span>⭐ Invincible</span>
+                    <div class="power-up-timer"></div>
+                </div>
+                <div id="magneticIndicator" class="power-up-indicator hidden">
+                    <span>🧲 Magnetic</span>
+                    <div class="power-up-timer"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="screen hidden">
+            <div class="screen-content">
+                <h1>Game Over!</h1>
+                <div id="finalScore">Final Score: <span>0</span></div>
+                <div id="finalLevel">Level Reached: <span>1</span></div>
+                <button id="restartButton" class="game-button">Play Again</button>
+            </div>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="startScreen" class="screen">
+            <div class="screen-content">
+                <h1>2D Car Racing</h1>
+                <div id="startScreenHighScore" style="font-size: 20px; color: #ffd700; margin: 15px 0; font-weight: bold;">
+                    High Score: <span id="startHighScoreValue">0</span>
+                </div>
+                <div class="instructions">
+                    <p>🎮 <strong>Controls:</strong></p>
+                    <p>← → Arrow Keys or A/D to steer</p>
+                    <p>🎯 <strong>Objective:</strong></p>
+                    <p>• Avoid obstacles</p>
+                    <p>• Collect stars for points</p>
+                    <p>• Pick up fuel to stay alive</p>
+                    <p>• Grab power-ups for advantages</p>
+                    <p>• Survive 5 increasingly difficult levels</p>
+                </div>
+                <button id="startButton" class="game-button">Start Game</button>
+            </div>
+        </div>
+
+        <!-- Level Complete Screen -->
+        <div id="levelCompleteScreen" class="screen hidden">
+            <div class="screen-content">
+                <h1>Level Complete!</h1>
+                <div id="levelScore">Score: <span>0</span></div>
+                <div id="bonusPoints">Bonus: <span>0</span></div>
+                <button id="nextLevelButton" class="game-button">Next Level</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="backgroundMusic" loop>
+        <source src="/sounds/background.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="hitSound">
+        <source src="/sounds/hit.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="successSound">
+        <source src="/sounds/success.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Game Scripts -->
+    <script src="/src/audio.js"></script>
+    <script src="/src/input.js"></script>
+    <script src="/src/particles.js"></script>
+    <script src="/src/gameObjects.js"></script>
+    <script src="/src/gameState.js"></script>
+    <script src="/src/ui.js"></script>
+    <script src="/src/game.js"></script>
+</body>
+</html>
