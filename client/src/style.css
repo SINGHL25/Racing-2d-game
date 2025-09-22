@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    overflow: hidden;
+    user-select: none;
+}
+
+#gameContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#gameCanvas {
+    background: #87CEEB;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+/* Game UI Overlay */
+#gameUI {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#topBar {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    backdrop-filter: blur(5px);
+}
+
+#scoreDisplay, #levelDisplay {
+    font-size: 18px;
+}
+
+#fuelContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#fuelLabel {
+    font-size: 16px;
+}
+
+#fuelBar {
+    width: 150px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#fuelFill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff4444 0%, #ffaa00 50%, #44ff44 100%);
+    transition: width 0.3s ease;
+    border-radius: 8px;
+}
+
+/* Power-up Indicators */
+#powerUpIndicators {
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.power-up-indicator {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 2px solid #ffd700;
+    animation: pulse 2s infinite;
+}
+
+.power-up-indicator.hidden {
+    display: none;
+}
+
+.power-up-timer {
+    width: 100px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.power-up-timer::after {
+    content: '';
+    display: block;
+    height: 100%;
+    background: #ffd700;
+    width: 100%;
+    animation: countdown linear;
+}
+
+@keyframes countdown {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+}
+
+/* Screen Overlays */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.screen.hidden {
+    display: none;
+}
+
+.screen-content {
+    text-align: center;
+    color: white;
+    max-width: 600px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+}
+
+.screen-content h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.instructions {
+    text-align: left;
+    margin: 30px 0;
+    line-height: 1.6;
+}
+
+.instructions p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.instructions strong {
+    color: #ffd700;
+}
+
+.game-button {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: all;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.game-button:hover {
+    background: linear-gradient(45deg, #ff5252, #ff7043);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.game-button:active {
+    transform: translateY(0);
+}
+
+#finalScore, #finalLevel, #levelScore, #bonusPoints {
+    font-size: 20px;
+    margin: 15px 0;
+    color: #fff;
+}
+
+#finalScore span, #finalLevel span, #levelScore span, #bonusPoints span {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #topBar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    #powerUpIndicators {
+        right: 10px;
+        top: 120px;
+    }
+    
+    .screen-content {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .screen-content h1 {
+        font-size: 36px;
+    }
+    
+    .instructions {
+        font-size: 14px;
+    }
+    
+    #fuelBar {
+        width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    #topBar {
+        font-size: 14px;
+    }
+    
+    .screen-content h1 {
+        font-size: 28px;
+    }
+    
+    .game-button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+}
